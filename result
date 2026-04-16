@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>번개장터 Trust Infrastructure Report 2025</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
+  :root{--navy:#0A0F1E;--navy-mid:#111827;--navy-light:#1E2A3D;--accent:#C8D4E8;--accent2:#8DBACC;--teal:#00C9A7;--blue:#3B82F6;--white:#F8F9FC;--gray:#8895AA;--border:rgba(255,255,255,0.08);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--navy);color:var(--white);font-family:'Noto Sans KR',sans-serif;line-height:1.6;overflow-x:hidden;}
+  .cover{min-height:480px;background:linear-gradient(145deg,#0A0F1E 0%,#0D1A2E 50%,#071220 100%);display:grid;grid-template-rows:auto 1fr auto;padding:48px 64px;position:relative;overflow:hidden;}
+  .cover::before{content:'';position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(255,92,26,0.12) 0%,transparent 70%);pointer-events:none;}
+  .cover::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent) 0%,var(--accent2) 50%,transparent 100%);}
+  .cover-top{display:flex;justify-content:space-between;align-items:flex-start;}
+  .badge{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;border:1px solid var(--accent);padding:6px 14px;border-radius:2px;}
+  .edition{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;color:var(--gray);text-align:right;line-height:1.8;}
+  .cover-main{display:flex;flex-direction:column;justify-content:center;padding:60px 0;}
+  .brand-name{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.3em;color:var(--accent);text-transform:uppercase;margin-bottom:32px;}
+  .cover-eyebrow{font-size:14px;color:var(--gray);letter-spacing:.05em;margin-bottom:16px;font-weight:300;}
+  .cover-title{font-family:'DM Serif Display',serif;font-size:clamp(52px,7vw,96px);line-height:1.0;margin-bottom:24px;font-style:italic;}
+  .cover-title em{font-style:normal;color:var(--accent);}
+  .cover-sub{font-size:18px;color:rgba(248,249,252,.65);max-width:600px;line-height:1.7;font-weight:300;margin-bottom:48px;border-left:2px solid var(--accent);padding-left:20px;}
+  .cover-thesis{display:inline-flex;align-items:center;gap:12px;background:rgba(255,92,26,.1);border:1px solid rgba(255,92,26,.3);padding:14px 24px;border-radius:4px;}
+  .cover-thesis span{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.1em;color:var(--accent);}
+  .cover-thesis small{font-size:12px;color:var(--gray);letter-spacing:.05em;}
+  .cover-bottom{display:flex;justify-content:space-between;align-items:flex-end;}
+  .toc-preview{display:flex;gap:32px;}
+  .toc-item{font-size:11px;color:var(--gray);letter-spacing:.1em;text-transform:uppercase;}
+  .toc-item strong{display:block;font-family:'DM Mono',monospace;font-size:20px;color:var(--white);margin-bottom:4px;}
+  section{padding:96px 64px;border-bottom:1px solid var(--border);}
+  .section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.3em;color:var(--accent);text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+  .section-label::before{content:'';width:32px;height:1px;background:var(--accent);}
+  .section-title{font-family:'DM Serif Display',serif;font-size:clamp(36px,4vw,56px);line-height:1.1;margin-bottom:16px;}
+  .section-title em{font-style:italic;color:var(--accent);}
+  .section-thesis{font-size:16px;color:rgba(248,249,252,.6);max-width:900px;margin-bottom:64px;font-weight:300;line-height:1.8;}
+  .connector{display:inline-block;margin:48px 0 0;font-size:13px;color:var(--teal);font-family:'DM Mono',monospace;letter-spacing:.05em;}
+  .connector::before{content:'→ ';}
+  .s1{background:var(--navy);}
+  .kpi-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:64px;}
+  .kpi-card{background:var(--navy-mid);padding:48px 40px;position:relative;overflow:hidden;}
+  .kpi-card::after{content:'';position:absolute;bottom:0;left:0;height:2px;width:100%;transition:width 1.2s ease;}
+  .kpi-card.orange::after{background:var(--accent);}
+  .kpi-card.gold::after{background:var(--accent2);}
+  .kpi-card.teal::after{background:var(--teal);}
+  .kpi-num{font-family:'Bebas Neue',sans-serif;font-size:80px;line-height:.9;margin-bottom:12px;letter-spacing:-.02em;}
+  .kpi-card.orange .kpi-num{color:var(--accent);}
+  .kpi-card.gold .kpi-num{color:var(--accent2);}
+  .kpi-card.teal .kpi-num{color:var(--teal);}
+  .kpi-label{font-size:14px;color:var(--white);font-weight:500;margin-bottom:8px;}
+  .kpi-desc{font-size:12px;color:var(--gray);line-height:1.6;font-weight:300;}
+  .chart-area{background:var(--navy-mid);border:1px solid var(--border);padding:40px;border-radius:4px;}
+  .chart-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:32px;}
+  .chart-title{font-size:14px;font-weight:500;color:var(--white);}
+  .chart-subtitle{font-size:12px;color:var(--gray);margin-top:4px;}
+  .chart-badge{font-family:'DM Mono',monospace;font-size:11px;color:var(--teal);border:1px solid var(--teal);padding:4px 10px;border-radius:2px;}
+  .bar-chart{display:flex;align-items:flex-end;gap:16px;height:160px;padding-top:8px;position:relative;}
+  .bar-chart::before{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--border);}
+  .bar-group{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end;}
+  .bar{width:100%;border-radius:2px 2px 0 0;position:relative;}
+  .bar.highlight{background:var(--accent);}
+  .bar.normal{background:rgba(255,92,26,.3);}
+  .bar.teal{background:var(--teal);}
+  .bar.teal-light{background:rgba(0,201,167,.35);}
+  .bar-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--gray);text-align:center;}
+  .bar-val{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:10px;font-family:'DM Mono',monospace;color:var(--accent);white-space:nowrap;}
+  .bar.teal .bar-val,.bar.teal-light .bar-val{color:var(--teal);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;}
+  .s2{background:#080D18;}
+  .uptime-hero{display:flex;align-items:center;gap:48px;margin-bottom:64px;padding:48px;background:var(--navy-light);border:1px solid var(--border);position:relative;overflow:hidden;}
+  .uptime-hero::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--teal);}
+  .uptime-num{font-family:'Bebas Neue',sans-serif;font-size:120px;line-height:.85;color:var(--teal);letter-spacing:-.03em;flex-shrink:0;}
+  .uptime-text h3{font-size:22px;font-weight:700;margin-bottom:12px;}
+  .uptime-text p{font-size:14px;color:var(--gray);line-height:1.8;font-weight:300;max-width:480px;}
+  .sti-chart{background:var(--navy-mid);border:1px solid var(--border);padding:40px;margin-bottom:32px;}
+  .line-chart-svg{width:100%;height:140px;display:block;}
+  .feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
+  .feature-cell{background:var(--navy-mid);padding:36px 32px;display:flex;gap:20px;align-items:flex-start;}
+  .feature-icon{width:40px;height:40px;background:rgba(255,92,26,.1);border:1px solid rgba(255,92,26,.25);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+  .feature-icon.teal-icon{background:rgba(0,201,167,.1);border-color:rgba(0,201,167,.25);}
+  .feature-body h4{font-size:14px;font-weight:600;margin-bottom:6px;}
+  .feature-body p{font-size:12px;color:var(--gray);line-height:1.7;font-weight:300;}
+  .feature-body .stat{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--accent);display:block;margin-bottom:4px;line-height:1;}
+  .feature-body .stat.teal{color:var(--teal);}
+  .s3{background:var(--navy);}
+  .corel-hero{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:64px;align-items:center;}
+  .corel-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,181,71,.1);border:1px solid rgba(255,181,71,.3);padding:8px 16px;border-radius:2px;margin-bottom:24px;font-size:12px;color:var(--accent2);font-family:'DM Mono',monospace;letter-spacing:.1em;}
+  .corel-stat-stack{display:flex;flex-direction:column;gap:16px;}
+  .corel-stat{background:var(--navy-light);border:1px solid var(--border);padding:36px 28px;display:flex;align-items:flex-start;gap:24px;}
+  .corel-num{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--accent2);line-height:1;flex-shrink:0;width:150px;letter-spacing:-.02em;white-space:nowrap;}
+  .corel-info{flex:1;min-width:0;}
+  .corel-info h4{font-size:13px;font-weight:600;margin-bottom:4px;}
+  .corel-info p{font-size:12px;color:var(--gray);line-height:1.6;font-weight:300;}
+  .tier-visual{background:var(--navy-light);border:1px solid var(--border);padding:40px;text-align:center;align-self:stretch;}
+  .tier-label{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.2em;color:var(--gray);margin-bottom:16px;}
+  .tier-badge{font-family:'Bebas Neue',sans-serif;font-size:72px;color:var(--accent2);display:block;line-height:1;margin-bottom:8px;}
+  .tier-sub{font-size:12px;color:var(--gray);line-height:1.7;}
+  .tier-tag{display:inline-block;margin-top:16px;background:rgba(255,181,71,.12);border:1px solid rgba(255,181,71,.3);padding:6px 14px;font-size:11px;color:var(--accent2);font-family:'DM Mono',monospace;letter-spacing:.1em;}
+  .s4{background:#080D18;}
+  .accountability-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
+  .acc-card{background:var(--navy-mid);padding:40px 32px;}
+  .acc-num{font-family:'Bebas Neue',sans-serif;font-size:56px;color:var(--accent);line-height:1;margin-bottom:8px;letter-spacing:-.02em;}
+  .acc-num.blue{color:var(--blue);}
+  .acc-num.gold{color:var(--accent2);}
+  .acc-label{font-size:14px;font-weight:600;margin-bottom:12px;}
+  .acc-desc{font-size:12px;color:var(--gray);line-height:1.7;font-weight:300;margin-bottom:24px;}
+  .mini-bar-group{display:flex;align-items:flex-end;gap:6px;height:56px;margin-top:0;}
+  .mini-bar{flex:1;border-radius:2px 2px 0 0;background:rgba(255,92,26,.25);}
+  .mini-bar.hi{background:var(--accent);}
+  .mini-bar.hi-b{background:var(--blue);}
+  .mini-bar.hi-g{background:var(--accent2);}
+  .mini-bar.mid-b{background:rgba(59,130,246,.3);}
+  .mini-bar.mid-g{background:rgba(255,181,71,.3);}
+  .axis-labels{display:flex;justify-content:space-between;margin-top:6px;}
+  .axis-labels span{font-family:'DM Mono',monospace;font-size:9px;color:rgba(136,149,170,0.6);flex:1;text-align:center;}
+  .tip-bar{position:relative;cursor:pointer;}
+  .tip-bar::after{content:attr(data-val);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#0A0F1E;border:1px solid rgba(255,255,255,0.15);color:var(--white);font-family:'DM Mono',monospace;font-size:11px;padding:4px 8px;border-radius:2px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s ease;}
+  .tip-bar:hover::after{opacity:1;}
+  .sb.tip-bar::after{display:none;}
+  #js-tooltip{position:fixed;background:#0A0F1E;border:1px solid rgba(255,255,255,0.2);color:#F8F9FC;font-family:'DM Mono',monospace;font-size:11px;padding:5px 10px;border-radius:2px;white-space:nowrap;pointer-events:none;z-index:9999;opacity:0;transition:opacity .15s ease;}
+  /* 거래금지품목 차트 */
+  .prohibited-block{margin-top:48px;border:1px solid var(--border);background:var(--navy-mid);}
+  .prohibited-header{padding:32px 40px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;}
+  .prohibited-header-left h3{font-size:16px;font-weight:700;margin-bottom:6px;}
+  .prohibited-header-left p{font-size:12px;color:var(--gray);font-weight:300;}
+  .prohibited-body{display:grid;grid-template-columns:1fr auto;gap:40px;padding:32px 40px;align-items:start;}
+  .stacked-chart{display:flex;align-items:flex-end;gap:20px;height:180px;padding-top:8px;position:relative;}
+  .stacked-chart::before{content:'';position:absolute;bottom:24px;left:0;right:0;height:1px;background:var(--border);}
+  .stack-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:0;justify-content:flex-end;}
+  .stack-col .bar-label{margin-top:8px;font-family:'DM Mono',monospace;font-size:10px;color:var(--gray);}
+  .stack-bar-wrap{width:100%;display:flex;flex-direction:column-reverse;border-radius:2px 2px 0 0;overflow:hidden;}
+  .sb{width:100%;transition:height .6s ease;}
+  .sb.c1{background:rgba(255,92,26,0.6);}
+  .sb.c2{background:rgba(255,181,71,0.45);}
+  .sb.c3{background:rgba(136,149,170,0.4);}
+  .sb.c4{background:rgba(255,255,255,0.08);}
+  .prohibited-right{min-width:220px;}
+  .legend-list{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
+  .legend-item{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--gray);}
+  .legend-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+  .detection-split{background:var(--navy-light);border:1px solid var(--border);padding:20px;border-radius:2px;}
+  .detection-split-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--gray);text-transform:uppercase;margin-bottom:14px;}
+  .detection-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+  .detection-row:last-child{margin-bottom:0;}
+  .detection-label{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gray);}
+  .detection-dot{width:8px;height:8px;border-radius:50%;}
+  .detection-pct{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:-.01em;}
+  .detection-pct.ai{color:var(--accent);}
+  .detection-pct.user{color:var(--gray);}
+  .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-top:1px solid var(--border);}
+  .cat-card{background:var(--navy-light);padding:24px 20px;}
+  .cat-num{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;color:var(--gray);margin-bottom:6px;}
+  .cat-title{font-size:13px;font-weight:700;margin-bottom:6px;}
+  .cat-desc{font-size:11px;color:var(--gray);line-height:1.6;font-weight:300;}
+  .cat-dot{width:8px;height:8px;border-radius:2px;display:inline-block;margin-right:6px;vertical-align:middle;}
+  .s5{background:linear-gradient(135deg,#0A0F1E 0%,#0D1A2E 100%);}
+  .causality-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:48px 0;position:relative;}
+  .causality-flow::before{content:'';position:absolute;top:24px;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--teal));z-index:0;}
+  .flow-node{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px;}
+  .flow-dot{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:16px;border:2px solid;background:var(--navy);}
+  .flow-dot.orange{border-color:var(--accent);color:var(--accent);}
+  .flow-dot.gold{border-color:var(--accent2);color:var(--accent2);}
+  .flow-dot.teal{border-color:var(--teal);color:var(--teal);}
+  .flow-dot.blue{border-color:var(--blue);color:var(--blue);}
+  .flow-title{font-size:12px;font-weight:700;margin-bottom:6px;}
+  .flow-desc{font-size:11px;color:var(--gray);line-height:1.6;}
+  .conclusion-block{background:rgba(255,92,26,.06);border:1px solid rgba(255,92,26,.2);padding:48px;margin-top:32px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:40px;}
+  .conclusion-block h3{font-family:'DM Serif Display',serif;font-size:28px;line-height:1.3;margin-bottom:12px;font-style:italic;}
+  .conclusion-block p{font-size:14px;color:var(--gray);line-height:1.8;font-weight:300;}
+  .conclusion-num{text-align:center;flex-shrink:0;}
+  .conclusion-num span{font-family:'Bebas Neue',sans-serif;font-size:72px;color:var(--accent);display:block;line-height:1;letter-spacing:-.02em;}
+  .conclusion-num small{font-size:12px;color:var(--gray);font-family:'DM Mono',monospace;letter-spacing:.05em;}
+  footer{padding:48px 64px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);}
+  .footer-brand{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:.1em;color:var(--accent);}
+  .footer-info{font-family:'DM Mono',monospace;font-size:10px;color:var(--gray);line-height:2;text-align:right;letter-spacing:.05em;}
+  .editor-panel{position:fixed;right:0;top:0;width:290px;height:100vh;background:#070B14;border-left:1px solid var(--border);overflow-y:auto;padding:32px 24px;z-index:1000;transition:transform .3s ease;}
+  .editor-panel.hidden{transform:translateX(100%);}
+  .editor-toggle{position:fixed;right:20px;bottom:32px;background:var(--accent);color:white;border:none;padding:12px 20px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.1em;cursor:pointer;z-index:1001;border-radius:2px;text-transform:uppercase;}
+  .ep-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.15em;margin-bottom:8px;color:var(--accent);}
+  .ep-sub{font-size:11px;color:var(--gray);margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--border);}
+  .note-item{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border);}
+  .note-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;margin-bottom:6px;}
+  .note-text{font-size:11px;color:var(--gray);line-height:1.7;}
+  .note-arrow{font-size:11px;color:var(--accent2);margin-top:6px;}
+  @media(max-width:900px){section{padding:64px 24px;}.cover{padding:32px 24px;}.kpi-strip,.two-col,.corel-hero,.feature-grid,.accountability-grid{grid-template-columns:1fr;}.causality-flow{grid-template-columns:repeat(2,1fr);}.editor-panel,.editor-toggle{display:none;}}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-top">
+    <div class="badge">Trust Infrastructure Report</div>
+    <div class="edition">2025 Annual Report<br>번개장터 Trust & Safety Department</div>
+  </div>
+  <div class="cover-main">
+    <div class="cover-eyebrow" style="visibility:hidden;height:0;margin:0;"></div>
+    <h1 class="cover-title" style="font-family:'Noto Sans KR',sans-serif;font-style:normal;font-weight:900;font-size:clamp(32px,4vw,60px);letter-spacing:-.02em;line-height:1.2;">성장의 이유,<br>번개장터의 압도적 <span style="color:var(--teal);">'신뢰 인프라'</span></h1>
+    <p class="cover-sub">신뢰가 만든 성장, 시스템이 지키는 거래, 사회가 인정하는 책임.<br>번개장터 Trust & Safety의 2025 인프라 리포트입니다.</p>
+  </div>
+  <div class="cover-bottom">
+    <div class="toc-preview">
+      <div class="toc-item"><strong>01</strong>확신이 선택으로, 신뢰가 성장으로.</div>
+      <div class="toc-item"><strong>02</strong>번개장터가 신뢰를 지키는 방식</div>
+      <div class="toc-item"><strong>03</strong>사회적 책임으로 완성하는 신뢰</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 거래 성장 지표 -->
+<section class="s1">
+  <div class="section-label">01 · Platform Growth</div>
+  <h2 class="section-title">확신이 선택으로, <em>신뢰가 성장으로.</em></h2>
+  <p class="section-thesis">번개장터가 설계한 안전한 거래 경험은 유저들의 지속적인 선택과 성장의 동력이 되었습니다.</p>
+
+  <div class="kpi-strip" style="grid-template-columns:repeat(2,1fr);">
+    <div class="kpi-card orange">
+      <div class="kpi-num">×2.4</div>
+      <div class="kpi-label">안전결제 이용자 2.4배 성장 (24H1 대비 25H2 기준)</div>
+      <div class="kpi-desc">25H1(2,486,239명) 대비 25H2(2,593,939명) 기준. 안전결제 활성 이용자 수가 꾸준히 성장하고 있습니다.</div>
+    </div>
+    <div class="kpi-card gold">
+      <div class="kpi-num" style="font-size:52px;">86,370건</div>
+      <div class="kpi-label">코어리틱스™ 과학검수 · 25H1 최대치</div>
+      <div class="kpi-desc">슈퍼페이크도 5초 만에 가려내는 코어리틱스. 플랫폼 최초 융합형 과학검수 솔루션 도입으로 고가 거래도 가품 걱정 없이 안심하고 거래할 수 있습니다.</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="chart-area">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">안전결제 이용 구매자 수</div>
+          <div class="chart-subtitle">Growth of Active Trust-Buyers · 24H1~25H2</div>
+        </div>
+        <div class="chart-badge">×2.4 GROWTH</div>
+      </div>
+      <div class="bar-chart">
+        <div class="bar-group"><div class="bar normal" style="height:42%"><span class="bar-val">1.08M</span></div><span class="bar-label">24H1</span></div>
+        <div class="bar-group"><div class="bar normal" style="height:78%"><span class="bar-val">2.01M</span></div><span class="bar-label">24H2</span></div>
+        <div class="bar-group"><div class="bar normal" style="height:96%"><span class="bar-val">2.49M</span></div><span class="bar-label">25H1</span></div>
+        <div class="bar-group"><div class="bar highlight" style="height:100%"><span class="bar-val">2.59M</span></div><span class="bar-label">25H2</span></div>
+      </div>
+      <p style="font-size:12px;color:var(--gray);line-height:1.7;font-weight:300;margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">안전결제 전면화 이후 유저들의 경험이 실제 거래량 증가로 직결되었습니다. 2025년 하반기 기준 <strong style="color:var(--white);font-weight:500;">259.3만 명</strong>이 안전결제 시스템 내에서 안전하게 거래했습니다. (단위: 만 명)</p>
+    </div>
+    <div class="chart-area">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">코어리틱스™ 검수 규모</div>
+          <div class="chart-subtitle">Scientific Inspection Volume · 24H1~25H2</div>
+        </div>
+        <div class="chart-badge" style="color:var(--teal);border-color:var(--teal)">86,370건 최대</div>
+      </div>
+      <div class="bar-chart">
+        <div class="bar-group"><div class="bar teal-light" style="height:86%"><span class="bar-val">74,557</span></div><span class="bar-label">24H1</span></div>
+        <div class="bar-group"><div class="bar teal-light" style="height:90%"><span class="bar-val">77,516</span></div><span class="bar-label">24H2</span></div>
+        <div class="bar-group"><div class="bar teal-light" style="height:100%"><span class="bar-val">86,370</span></div><span class="bar-label">25H1</span></div>
+        <div class="bar-group"><div class="bar teal" style="height:98%"><span class="bar-val">84,708</span></div><span class="bar-label">25H2</span></div>
+      </div>
+      <p style="font-size:12px;color:var(--gray);line-height:1.7;font-weight:300;margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">슈퍼페이크 시대를 대비한 과학검수 솔루션은 고관여 브랜드 거래 성장의 엔진입니다. 반기 평균 <strong style="color:var(--white);font-weight:500;">8만 건 이상</strong>의 검증이 거래 장벽을 제거했습니다. (단위: 건)</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 안전결제 전면화 -->
+<section class="s2">
+  <div class="section-label">02 · Safe Payment Infrastructure</div>
+  <h2 class="section-title"><em>신뢰를 지키는 방식</em></h2>
+  <p class="section-thesis">사기가 불가능한 구조, 시스템으로 증명합니다. 안전결제 고도화와 AI 선제 탐지 시스템을 통해 사기 발생 가능성을 원천 차단합니다.</p>
+
+  <div class="uptime-hero">
+    <div class="uptime-num">99.7%</div>
+    <div class="uptime-text">
+      <h3>STI(안전 거래 지수) 역대 최고치 99.7% 달성, 빈틈없는 거래 환경</h3>
+      <p style="font-size:12px;color:var(--teal);margin-bottom:10px;font-family:'DM Mono',monospace;letter-spacing:.03em;">STI는 무사고 거래율과 거래 문제 해결율에 가중치를 적용하여 점수화한 안전 인프라 지표입니다.</p>
+      <p>거래 전 과정을 실시간 모니터링하는 STI(Safety Transaction Index)가 99.7%를 기록하며 구조적인 신뢰를 완성했습니다.</p>
+    </div>
+  </div>
+
+  <div class="sti-chart">
+    <div class="chart-header">
+      <div>
+        <div class="chart-title">STI (Safety Transaction Index)</div>
+        <div class="chart-subtitle">24H2 → 25H1 → 25H2 · 3개 반기 연속 상승</div>
+      </div>
+      <div class="chart-badge" style="color:var(--teal);border-color:var(--teal)">↑ INFRA STABILITY</div>
+    </div>
+    <svg class="line-chart-svg" viewBox="0 0 800 240" xmlns="http://www.w3.org/2000/svg" style="height:240px;">
+      <defs>
+        <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#00C9A7" stop-opacity="0.2"/>
+          <stop offset="100%" stop-color="#00C9A7" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <line x1="60" y1="30" x2="740" y2="30" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <line x1="60" y1="100" x2="740" y2="100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <line x1="60" y1="170" x2="740" y2="170" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <text x="52" y="34" fill="rgba(255,255,255,0.2)" font-size="10" font-family="monospace" text-anchor="end">100.0</text>
+      <text x="52" y="104" fill="rgba(255,255,255,0.2)" font-size="10" font-family="monospace" text-anchor="end">99.5</text>
+      <text x="52" y="174" fill="rgba(255,255,255,0.2)" font-size="10" font-family="monospace" text-anchor="end">99.0</text>
+      <line x1="60" y1="170" x2="740" y2="170" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+      <path d="M 200 128 C 300 110 350 96 400 86 C 500 80 550 76 600 72 L 600 170 L 200 170 Z" fill="url(#lineGrad)"/>
+      <path d="M 200 128 C 300 110 350 96 400 86 C 500 80 550 76 600 72" stroke="rgba(0,201,167,0.45)" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <circle cx="200" cy="128" r="5" fill="rgba(0,201,167,0.3)" stroke="rgba(0,201,167,0.4)" stroke-width="1"/>
+      <circle cx="400" cy="86" r="5" fill="rgba(0,201,167,0.3)" stroke="rgba(0,201,167,0.4)" stroke-width="1"/>
+      <circle cx="600" cy="72" r="8" fill="#00C9A7"/>
+      <circle cx="600" cy="72" r="14" fill="rgba(0,201,167,0.15)"/>
+      <text x="200" y="118" fill="rgba(0,201,167,0.45)" font-size="12" font-family="monospace" text-anchor="middle">99.3%</text>
+      <text x="400" y="76" fill="rgba(0,201,167,0.45)" font-size="12" font-family="monospace" text-anchor="middle">99.6%</text>
+      <text x="600" y="55" fill="#00C9A7" font-size="18" font-family="monospace" text-anchor="middle" font-weight="bold">99.7%</text>
+      <text x="200" y="192" fill="rgba(255,255,255,0.3)" font-size="12" font-family="monospace" text-anchor="middle">24H2</text>
+      <text x="400" y="192" fill="rgba(255,255,255,0.3)" font-size="12" font-family="monospace" text-anchor="middle">25H1</text>
+      <text x="600" y="192" fill="#00C9A7" font-size="12" font-family="monospace" text-anchor="middle" font-weight="bold">25H2</text>
+      <text x="600" y="210" fill="rgba(0,201,167,0.6)" font-size="10" font-family="monospace" text-anchor="middle">▲ 최고치</text>
+      <text x="200" y="218" fill="rgba(255,255,255,0.15)" font-size="9" font-family="monospace" text-anchor="middle">*24H1 기준 제외</text>
+    </svg>
+    <p style="font-size:12px;color:var(--gray);margin-top:16px;font-weight:300;">STI 지수 3개 반기 연속 상승. 24H1은 기준 수립 기간으로 집계에서 제외합니다.</p>
+  </div>
+
+  <!-- AI 선제 탐지 비율 차트 -->
+  <div class="two-col" style="margin-top:32px;">
+    <div class="chart-area">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">AI 탐지 인프라: 사고 발생 전 AI가 먼저 찾아내는 '선제 대응'</div>
+          <div class="chart-subtitle">위반 게시물 조치 경로 비중 · 연간</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:40px;padding-top:8px;">
+        <!-- SVG 도넛 차트 -->
+        <svg viewBox="0 0 160 160" width="160" height="160" style="flex-shrink:0;">
+          <!-- 배경 원 -->
+          <circle cx="80" cy="80" r="60" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="22"/>
+          <!-- 유저 신고 56.7% (배경) -->
+          <circle cx="80" cy="80" r="60" fill="none" stroke="rgba(136,149,170,0.25)" stroke-width="22"
+            stroke-dasharray="377" stroke-dashoffset="0" transform="rotate(-90 80 80)"/>
+          <!-- AI 탐지 43.3% -->
+          <circle cx="80" cy="80" r="60" fill="none" stroke="#00C9A7" stroke-width="22"
+            stroke-dasharray="163 377" stroke-dashoffset="0" transform="rotate(-90 80 80)"
+            stroke-linecap="butt"/>
+          <!-- 중앙 텍스트 -->
+          <text x="80" y="74" fill="#00C9A7" font-size="22" font-family="monospace" text-anchor="middle" font-weight="bold">43.3%</text>
+          <text x="80" y="94" fill="rgba(255,255,255,0.4)" font-size="10" font-family="monospace" text-anchor="middle">AI 탐지</text>
+        </svg>
+        <!-- 범례 + 설명 -->
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+            <div style="width:10px;height:10px;border-radius:2px;background:#00C9A7;flex-shrink:0;"></div>
+            <div>
+              <div style="font-size:13px;font-weight:600;">AI 선제 탐지 (43.3%)</div>
+              <div style="font-family:'DM Mono',monospace;font-size:22px;color:#00C9A7;line-height:1.2;">43.3%</div>
+              <div style="font-size:11px;color:var(--gray);margin-top:2px;">신고 접수 전 AI가 이상 거래를 자동으로 차단</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:10px;height:10px;border-radius:2px;background:rgba(136,149,170,0.35);flex-shrink:0;"></div>
+            <div>
+              <div style="font-size:13px;font-weight:600;">사용자 신고 (56.7%)</div>
+              <div style="font-family:'DM Mono',monospace;font-size:22px;color:var(--gray);line-height:1.2;">56.7%</div>
+              <div style="font-size:11px;color:var(--gray);margin-top:2px;">신고 즉시 정밀 검토 및 강력 조치</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 거래금지품목 차트 (우측으로 이동) -->
+    <div class="chart-area" style="padding:0;overflow:hidden;">
+      <div style="padding:24px 28px 16px;">
+        <div class="chart-title">유형별 위반 게시물 조치 현황</div>
+        <div class="chart-subtitle">분기별 거래금지품목 및 위반 콘텐츠 조치 건수</div>
+      </div>
+      <div style="padding:0 28px;display:flex;gap:24px;align-items:flex-end;">
+        <div class="stacked-chart" style="flex:1;height:160px;">
+          <div class="stack-col">
+            <div class="stack-bar-wrap" style="height:160px;">
+              <div class="sb c1 tip-bar" data-val="지식재산권 21,501건" style="height:9.5%"></div>
+              <div class="sb c2 tip-bar" data-val="법령위반 65,217건" style="height:28.9%"></div>
+              <div class="sb c3 tip-bar" data-val="거래안전 119,795건" style="height:53.1%"></div>
+              <div class="sb c4 tip-bar" data-val="커뮤니티 19,083건" style="height:8.5%"></div>
+            </div>
+            <span class="bar-label">24H1</span>
+          </div>
+          <div class="stack-col">
+            <div class="stack-bar-wrap" style="height:113px;">
+              <div class="sb c1 tip-bar" data-val="지식재산권 20,661건" style="height:12.9%"></div>
+              <div class="sb c2 tip-bar" data-val="법령위반 46,158건" style="height:28.9%"></div>
+              <div class="sb c3 tip-bar" data-val="거래안전 77,876건" style="height:48.8%"></div>
+              <div class="sb c4 tip-bar" data-val="커뮤니티 14,939건" style="height:9.4%"></div>
+            </div>
+            <span class="bar-label">24H2</span>
+          </div>
+          <div class="stack-col">
+            <div class="stack-bar-wrap" style="height:108px;">
+              <div class="sb c1 tip-bar" data-val="지식재산권 16,909건" style="height:11.1%"></div>
+              <div class="sb c2 tip-bar" data-val="법령위반 41,897건" style="height:27.5%"></div>
+              <div class="sb c3 tip-bar" data-val="거래안전 79,693건" style="height:52.3%"></div>
+              <div class="sb c4 tip-bar" data-val="커뮤니티 13,731건" style="height:9.0%"></div>
+            </div>
+            <span class="bar-label">25H1</span>
+          </div>
+          <div class="stack-col">
+            <div class="stack-bar-wrap" style="height:114px;">
+              <div class="sb c1 tip-bar" data-val="지식재산권 19,274건" style="height:12.0%"></div>
+              <div class="sb c2 tip-bar" data-val="법령위반 50,942건" style="height:31.7%"></div>
+              <div class="sb c3 tip-bar" data-val="거래안전 77,609건" style="height:48.3%"></div>
+              <div class="sb c4 tip-bar" data-val="커뮤니티 13,015건" style="height:8.1%"></div>
+            </div>
+            <span class="bar-label">25H2</span>
+          </div>
+        </div>
+        <div style="flex-shrink:0;">
+          <div class="legend-list" style="margin-bottom:0;">
+            <div class="legend-item"><div class="legend-dot" style="background:rgba(255,92,26,0.6)"></div>지식재산권 보호</div>
+            <div class="legend-item"><div class="legend-dot" style="background:rgba(255,181,71,0.45)"></div>법령 위반 관리</div>
+            <div class="legend-item"><div class="legend-dot" style="background:rgba(136,149,170,0.4)"></div>거래 안전 및 질서</div>
+            <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.12)"></div>커뮤니티 매너</div>
+          </div>
+        </div>
+      </div>
+      <div class="cat-grid" style="margin-top:16px;border-top:1px solid var(--border);">
+        <div class="cat-card" style="padding:16px 14px;">
+          <div class="cat-num"><span class="cat-dot" style="background:rgba(255,92,26,0.6)"></span>01</div>
+          <div class="cat-title" style="font-size:11px;">지식재산권 보호</div>
+        </div>
+        <div class="cat-card" style="padding:16px 14px;">
+          <div class="cat-num"><span class="cat-dot" style="background:rgba(255,181,71,0.45)"></span>02</div>
+          <div class="cat-title" style="font-size:11px;">법령 위반 관리</div>
+        </div>
+        <div class="cat-card" style="padding:16px 14px;">
+          <div class="cat-num"><span class="cat-dot" style="background:rgba(136,149,170,0.4)"></span>03</div>
+          <div class="cat-title" style="font-size:11px;">거래 안전 및 질서</div>
+        </div>
+        <div class="cat-card" style="padding:16px 14px;">
+          <div class="cat-num"><span class="cat-dot" style="background:rgba(255,255,255,0.15)"></span>04</div>
+          <div class="cat-title" style="font-size:11px;">커뮤니티 매너</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector" style="display:none;"></div>
+</section>
+
+<!-- 03 공적 책임 -->
+<section class="s4">
+  <div class="section-label">03 · Public Accountability</div>
+  <h2 class="section-title">플랫폼의 책임을 넘어, <em>중고거래의 표준으로</em></h2>
+  <p class="section-thesis">법령 이행을 넘어 건전한 중고거래 생태계 조성을 위한 사회적 책임을 다합니다.</p>
+
+  <div class="accountability-grid">
+    <div class="acc-card">
+      <div class="acc-num" style="font-size:36px;line-height:1.1;">수사기관<br>협조</div>
+      <div class="acc-label" style="margin-top:12px;">25H2 기준 · 589건</div>
+      <div class="acc-desc">범죄 피해 신고 및 수사 데이터 제공. 꾸준한 협조 이행으로 건수가 안정적으로 관리되고 있습니다.</div>
+      <div class="mini-bar-group">
+        <div class="mini-bar tip-bar" data-val="992건" style="height:100%"></div>
+        <div class="mini-bar tip-bar" data-val="780건" style="height:79%"></div>
+        <div class="mini-bar tip-bar" data-val="645건" style="height:65%"></div>
+        <div class="mini-bar hi tip-bar" data-val="589건" style="height:59%"></div>
+      </div>
+      <div class="axis-labels"><span>24H1</span><span>24H2</span><span>25H1</span><span>25H2</span></div>
+    </div>
+    <div class="acc-card">
+      <div class="acc-num blue" style="font-size:36px;line-height:1.1;">정부기관<br>요청</div>
+      <div class="acc-label" style="margin-top:12px;">25H2 기준 · 870건</div>
+      <div class="acc-desc">관련 법령 위반에 대한 정부 행정 명령에 성실히 응하며 시장 질서를 지킵니다. 24H2 급증(1,762건) 대응 후 안정화되고 있습니다.</div>
+      <div class="mini-bar-group">
+        <div class="mini-bar mid-b tip-bar" data-val="736건" style="height:42%"></div>
+        <div class="mini-bar mid-b tip-bar" data-val="1,762건" style="height:100%"></div>
+        <div class="mini-bar mid-b tip-bar" data-val="944건" style="height:54%"></div>
+        <div class="mini-bar hi-b tip-bar" data-val="870건" style="height:49%"></div>
+      </div>
+      <div class="axis-labels"><span>24H1</span><span>24H2</span><span>25H1</span><span>25H2</span></div>
+    </div>
+    <div class="acc-card">
+      <div class="acc-num gold" style="font-size:36px;line-height:1.1;">브랜드<br>보호</div>
+      <div class="acc-label" style="margin-top:12px;">25H2 기준 · 4,427건</div>
+      <div class="acc-desc">지식재산권 보호 및 위조 방지를 위해 브랜드사와 적극 협업하며 신뢰 생태계를 유지합니다. 24H2(9,523건) 집중 대응 이후 효과적으로 감소하고 있습니다.</div>
+      <div class="mini-bar-group">
+        <div class="mini-bar mid-g tip-bar" data-val="7,570건" style="height:79%"></div>
+        <div class="mini-bar mid-g tip-bar" data-val="9,523건" style="height:100%"></div>
+        <div class="mini-bar mid-g tip-bar" data-val="5,137건" style="height:54%"></div>
+        <div class="mini-bar hi-g tip-bar" data-val="4,427건" style="height:46%"></div>
+      </div>
+      <div class="axis-labels"><span>24H1</span><span>24H2</span><span>25H1</span><span>25H2</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">BGZT</div>
+  </div>
+  <div class="footer-info">TRUST & SAFETY DEPARTMENT<br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3655595b465a5f575855537654514c42185559185d44">[email&#160;protected]</a><br>© 2025 TRUST INFRASTRUCTURE REPORT<br>VERIFICATION ID: TC-2025-AI</div>
+</footer>
+
+<!-- EDITOR PANEL -->
+<div class="editor-panel hidden" id="editorPanel">
+  <div class="ep-title">편집 노트</div>
+  <div class="ep-sub">기존 피드백 + 추가 개선 포인트</div>
+  <div class="note-item">
+    <div class="note-tag">A · 리네임 (기존 피드백)</div>
+    <div class="note-text">기업투명성보고서 → <strong>Trust Infrastructure Report</strong>로 변경. 이름 자체가 "왜 성장했는지"의 답을 암시하도록 포지셔닝.</div>
+  </div>
+  <div class="note-item">
+    <div class="note-tag">B · 엄브렐라 메시지 (기존 피드백)</div>
+    <div class="note-text"><strong>"Trust Drives Transactions"</strong> — 표지 헤드라인으로 전면 배치. 모든 섹션이 이 메시지를 향해 수렴하는 구조로 설계.</div>
+  </div>
+  <div class="note-item">
+    <div class="note-tag">C · 구조 변경 (기존 피드백)</div>
+    <div class="note-text">거래 성장 지표 <strong>첫 번째 섹션</strong> 이동. 성장이 먼저, 이유는 뒤에 — 독자의 궁금증 유발 구조.</div>
+  </div>
+  <div class="note-item">
+    <div class="note-tag">추가 개선 ① NEW</div>
+    <div class="note-text"><strong>인과 관계 결론 섹션(05)</strong> 신규 추가. 4개 인프라 → ×2.4 성장 흐름을 시각화.</div>
+    <div class="note-arrow">→ 단순 활동 기록 → 성장 근거 문서로 포지셔닝</div>
+  </div>
+  <div class="note-item">
+    <div class="note-tag">추가 개선 ② NEW</div>
+    <div class="note-text">각 섹션 하단 <strong>→ 커넥터 문구</strong> 추가. "그래서 다음 섹션이 필요하다"는 인과 흐름 명시.</div>
+  </div>
+  <div class="note-item">
+    <div class="note-tag">추가 개선 ③ NEW</div>
+    <div class="note-text"><strong>Executive KPI 3종</strong>을 표지 다음 첫 노출로 배치. 임원/파트너 독자가 핵심 수치를 즉시 파악.</div>
+  </div>
+  <div class="note-item">
+    <div class="note-tag">추가 개선 ④ NEW</div>
+    <div class="note-text">표지 하단에 <strong>4챕터 미리보기</strong> 배치. 논리 구조가 표지에서부터 전달되도록 설계.</div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<style>
+@media print {
+  .editor-panel, .editor-toggle, #saveBtn { display: none !important; }
+  body { background: #0A0F1E !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  section, .cover { break-inside: avoid; page-break-inside: avoid; }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  // 패널 토글
+  window.togglePanel = function() {
+    const p = document.getElementById('editorPanel');
+    const b = document.querySelector('.editor-toggle');
+    p.classList.toggle('hidden');
+    b.textContent = p.classList.contains('hidden') ? '편집 노트 보기' : '패널 닫기';
+  };
+
+  // JS 툴팁 (overflow:hidden 바깥에 렌더)
+  const tip = document.createElement('div');
+  tip.id = 'js-tooltip';
+  document.body.appendChild(tip);
+  document.querySelectorAll('.sb.tip-bar').forEach(el => {
+    el.addEventListener('mouseenter', () => { tip.textContent = el.dataset.val; tip.style.opacity = '1'; });
+    el.addEventListener('mousemove', e => { tip.style.left = (e.clientX + 14) + 'px'; tip.style.top = (e.clientY - 28) + 'px'; });
+    el.addEventListener('mouseleave', () => { tip.style.opacity = '0'; });
+  });
+
+  // 이미지 저장
+  window.saveAsImage = async function() {
+    const btn = document.getElementById('saveBtn');
+    btn.textContent = '저장 중...';
+    btn.disabled = true;
+    try {
+      const canvas = await html2canvas(document.body, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#0A0F1E',
+        scrollY: -window.scrollY,
+        windowWidth: document.documentElement.scrollWidth,
+        windowHeight: document.documentElement.scrollHeight,
+        ignoreElements: el => el.id === 'saveBtn' || el.classList.contains('editor-toggle') || el.classList.contains('editor-panel')
+      });
+      const link = document.createElement('a');
+      link.download = 'bgzt_trust_infrastructure_report_2025.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    } catch(e) {
+      window.print();
+    }
+    btn.textContent = '↓ 이미지로 저장';
+    btn.disabled = false;
+  };
+
+  // 스크롤 애니메이션
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.kpi-card,.chart-area,.feature-cell,.acc-card,.flow-node').forEach(el => {
+    el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; el.style.transition = 'opacity .6s ease,transform .6s ease';
+    obs.observe(el);
+  });
+
+});
+</script>
+
+<button class="editor-toggle" onclick="togglePanel()">편집 노트 보기</button>
+<button id="saveBtn" onclick="saveAsImage()" style="position:fixed;right:20px;bottom:80px;background:#1E2A3D;color:#F8F9FC;border:1px solid rgba(255,255,255,0.15);padding:12px 20px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.1em;cursor:pointer;z-index:9999;border-radius:2px;text-transform:uppercase;transition:background .2s;" onmouseover="this.style.background='#2a3a50'" onmouseout="this.style.background='#1E2A3D'">↓ 이미지로 저장</button>
+
+</body>
+</html>
